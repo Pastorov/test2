@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <title>Mapa z Trasami Komunikacji Miejskiej</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Główny kontener dla elementów mapy i panelu interfejsu użytkownika -->
+    <div class="map-container">
+      <!-- Panel boczny dla interakcji użytkownika -->
+      <div id="panel" class="panel">
+        <!-- Przycisk powrotu -->
+        <button id="backButton" onclick="goBack()">
+          <!-- Ikona przycisku -->
+          <i class="fa-solid fa-left-long"></i>
+        </button>
+        <!-- Ikona użytkownika -->
+        <i id="userIcon" class="fas fa-user"></i>
+        <!-- Panel logowania, domyślnie ukryty -->
+        <div id="loginPanel" class="search-bar" style="display: none;">
+          <!-- Formularz logowania -->
+          <form action="login.php" method="post">
+            <input type="text" id="username" name="username" placeholder="Nazwa użytkownika">
+            <input type="password" id="password" name="password" placeholder="Hasło">
+            <button type="submit">Zaloguj</button>
+          </form>
+          <!-- Link do rejestracji nowego użytkownika -->
+          <div style="text-align: center; margin-top: 10px;">
+            <a href="#" id="registerLink">Zarejestruj się</a>
+          </div>
+        </div>
+        <!-- Panel rejestracji, domyślnie ukryty -->
+        <div id="registerPanel" class="search-bar" style="display: none;">
+          <!-- Formularz rejestracji -->
+          <form action="register.php" method="post">
+            <input type="text" id="newUsername" name="newUsername" placeholder="Nowa nazwa użytkownika">
+            <input type="password" id="newPassword" name="newPassword" placeholder="Nowe hasło">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Potwierdź hasło">
+            <button type="submit">Zarejestruj się</button>
+          </form>
+          <!-- Link do panelu logowania -->
+          <div style="text-align: center; margin-top: 10px;">
+            <a href="#" id="loginLink">Zaloguj się</a>
+          </div>
+        </div>
+        <!-- Panel wyszukiwania trasy -->
+        <div id="searchPanel" class="search-bar">
+          <input type="text" id="start" placeholder="Początek trasy">
+          <button onclick="useCurrentLocation()">Użyj mojej lokalizacji</button>
+          <input type="text" id="end" placeholder="Koniec trasy">
+          <input type="time" id="departureTime">
+          <button onclick="calculateAndDisplayRoute()">Wyznacz trasę</button>
+        </div>
+        <!-- Przyciski przełączania między zakładkami -->
+        <div class="tabs" id="tabs">
+          <button class="tab active" onclick="switchTab('route')">Trasa</button>
+          <button class="tab" onclick="switchTab('schedules')">Linie</button>
+          <button class="tab" onclick="switchTab('options')">Opcje</button>
+        </div>
+        <!-- Panel wyświetlający wskazówki dojazdu -->
+        <div id="directionsPanel"></div>
+        <!-- Panel z rozkładami jazdy, domyślnie ukryty -->
+        <div id="schedulesPanel" style="display: none;">
+          <div class="container mt-5">
+            <table class="table">
+              <tbody id="linesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Panel opcji, domyślnie ukryty -->
+        <div id="optionsPanel" style="display: none;">
+          <div id="routeModeSelector" class="route-mode-selector">
+            <label for="routeMode">Tryb trasy:</label>
+            <select id="routeMode" class="form-select">
+              <option value="optimal">Optymalna</option>
+              <option value="fast">Szybka</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- Kontener dla mapy Google Maps -->
+      <div id="map"></div>
+    </div>
+    <!-- Skrypty JavaScript dla funkcjonalności strony -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="zmienne.js"></script>
+    <script src="time.js"></script>
+    <script src="map.js"></script>
+    <script src="ui.js"></script>
+    <script src="linie.js"></script>
+    <script src="przystanki.js"></script>
+    <script src="pojazdy.js"></script>
+    <script src="wyszukiwanie_trasy.js"></script>
+    <script src="login_reje.js"></script>
+    <!-- Asynchroniczny skrypt Google Maps API z kluczem API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvHP7Cxjt0aZNP0MSRE3i_qGjanBTs7ys&callback=initMap&libraries=places"></script>
+  </body>
+</html>
+
+

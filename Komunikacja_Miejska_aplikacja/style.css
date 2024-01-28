@@ -1,0 +1,196 @@
+/* Styl dla tła okna informacyjnego, ustawiający obraz tła, pokrycie tła, kolor tekstu,
+   padding, zaokrąglenie rogów, szerokość, wysokość, rodzaj czcionki, źródło czcionki i rozmiar czcionki. */
+   .infoWindow-background {
+    background-image: url('Tablica.png');
+    background-size: cover;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+    height: 150px;
+    font-family: 'digital-7';
+    src: url('digital-7.ttf') format('truetype');
+    font-size: 10px;
+}
+
+/* Definiuje styl dla tabeli wewnątrz okna informacyjnego, w tym szerokość i właściwości granicy. */
+.infoWindow-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Dotyczy komórek w tabeli okna informacyjnego, określając ich granice i padding. */
+.infoWindow-table td {
+    border: none;
+    padding: 3px;
+}
+
+/* Styl dla ikony użytkownika, z określonym położeniem, rozmiarem czcionki i kolorem. */
+.fa-user {
+    position: relative;
+    right: -280px;
+    top: 0px;
+    font-size: 24px;
+    color: #007bff;
+}
+
+
+/* Ustawia styl dla całego ciała dokumentu i elementu html, w tym wysokość, margines i rodzaj czcionki. */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Definiuje kontener mapy z określonym położeniem, szerokością i wysokością. */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styl dla panelu interfejsu użytkownika z określonym położeniem, tłem, paddingiem, zaokrągleniem rogów, szerokością, cieniem i indeksem z. */
+.panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #FFF;
+    padding: 10px;
+    border-radius: 8px;
+    width: 350px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
+  
+  /* Media query for screens smaller than 600px (adjust as needed) */
+  @media only screen and (max-width: 600px) {
+    .panel {
+      width: 100%;
+      left: 0;
+      border-radius: 0;
+    }
+  }
+
+/* Definiuje styl paska wyszukiwania z tłem, paddingiem i zaokrągleniem rogów. */
+.search-bar {
+    background: #E6E6FA;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Styl dla pól tekstowych i przycisków w pasku wyszukiwania, w tym szerokość, padding, margines, brak granic, zaokrąglenie rogów. */
+.search-bar input[type="text"], .search-bar input[type="password"], .search-bar input[type="time"], .search-bar button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Styl dla przycisków w pasku wyszukiwania, z określonym kolorem tła, kolorem tekstu i kursorem. */
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+/* Zmienia styl przycisku w pasku wyszukiwania podczas najechania kursorem. */
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Definiuje styl dla zakładek z użyciem flexboxa, marginesu i innych właściwości. */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+/* Styl poszczególnych zakładek z paddingiem, tekstem, rosnącym wypełnieniem, tłem, zaokrągleniem rogów i kursorem. */
+.tab {
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+    background: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+    border-width: 0px;
+}
+
+/* Styl dla aktywnej zakładki, z określonym tłem i kolorem tekstu. */
+.tab.active {
+    background: #007bff;
+    color: white;
+}
+
+/* Definiuje styl dla elementu mapy z określoną wysokością. */
+#map {
+    height: 100%;
+}
+
+/* Styl dla przycisku powrotu z marginesem, paddingiem, kolorem tła, kolorem tekstu, kursorem, brakiem granicy, zaokrągleniem rogów i szerokością. */
+.back-button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Zmienia styl przycisku powrotu podczas najechania kursorem. */
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styl dla różnych paneli z określonym wyświetlaniem, maksymalną wysokością i przewijaniem. */
+#directionsPanel, #schedulesPanel, #optionsPanel {
+    display: none;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+/* Ukrywa elementy z określonymi atrybutami jstcache. */
+[jstcache="56"], [jstcache="76"], [jstcache="87"], [jstcache="55"] {
+    display: none;
+}
+
+/* Styl dla przycisku powrotu z określonym wyświetlaniem i położeniem. */
+#backButton {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Definiuje kolor dla ikony strzałki w lewo. */
+.fa-left-long {
+    color: #007bff;
+}
+
+/* Styl dla selektora trybu trasy z marginesem, paddingiem, kolorem tła, zaokrągleniem rogów. */
+.route-mode-selector {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+/* Styl dla etykiet w selektorze trybu trasy, z określonym marginesem i wytłuszczeniem. */
+.route-mode-selector label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Styl dla elementu form-select w selektorze trybu trasy, z określonym wyświetlaniem, szerokością, paddingiem, granicą, zaokrągleniem rogów i kolorem tła. */
+.route-mode-selector .form-select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
